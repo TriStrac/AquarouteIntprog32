@@ -1,5 +1,6 @@
 package com.cansal.aquaroute
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,11 @@ class HomePage : AppCompatActivity() {
         }
         binding.screenName.text="Deliveries"
         replaceFragment(DeliveriesFragment())
+
+        binding.accountIcon.setOnClickListener {
+            intent = Intent(this,AccountPage::class.java)
+            startActivity(intent)
+        }
 
         binding.bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {

@@ -22,19 +22,12 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/menuIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:src="@drawable/menu_icon" />
-
             <TextView
                 android:id="@+id/screenName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingLeft="30dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:text="TextView"
@@ -45,7 +38,9 @@
                 android:id="@+id/accountIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:padding="10dp"
+                android:paddingEnd="20dp"
                 android:src="@drawable/account_icon" />
 
         </LinearLayout>
@@ -67,7 +62,6 @@
         android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
