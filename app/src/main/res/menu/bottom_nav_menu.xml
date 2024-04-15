@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/delivery1"
+        android:icon="@drawable/delivery_icon"
+        android:title="Deliveries" />
+    <item
+        android:id="@+id/client2"
+        android:icon="@drawable/client_icon"
+        android:title="Clients" />
+    <item
+        android:id="@+id/analytic3"
+        android:icon="@drawable/analytics_icon"
+        android:title="Analytics" />
+    <item
+        android:id="@+id/transaction4"
+        android:icon="@drawable/transaction_icon"
+        android:title="Transactions" />
+</menu>
