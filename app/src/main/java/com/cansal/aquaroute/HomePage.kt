@@ -20,23 +20,28 @@ class HomePage : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding.screenName.text="Deliveries"
         replaceFragment(DeliveriesFragment())
 
         binding.bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.delivery1 -> {
+                    binding.screenName.text="Deliveries"
                     replaceFragment(DeliveriesFragment())
                     true
                 }
                 R.id.client2 -> {
+                    binding.screenName.text="Clients"
                     replaceFragment(ClientsFragment())
                     true
                 }
                 R.id.analytic3 -> {
+                    binding.screenName.text="Analytics"
                     replaceFragment(AnalyticsFragment())
                     true
                 }
                 R.id.transaction4 -> {
+                    binding.screenName.text="Transactions"
                     replaceFragment(TransactionsFragment())
                     true
                 }
