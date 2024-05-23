@@ -1,5 +1,6 @@
 package com.cansal.aquaroute
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,9 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cansal.aquaroute.databinding.ActivityLandingPageBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class LandingPage : AppCompatActivity() {
     private lateinit var binding: ActivityLandingPageBinding
+    private val mainScope = CoroutineScope(Dispatchers.Main)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLandingPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -20,9 +28,18 @@ class LandingPage : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.startButton.setOnClickListener {
-            intent = Intent(this,LoginPage::class.java)
-            startActivity(intent)
+
+        mainScope.launch {
+            delay(1500)
+            val intent = Intent(this@LandingPage, OnboardPage::class.java)
+            val options = ActivityOptions.makeCustomAnimation(this@LandingPage, R.anim.fade_in, R.anim.fade_out)
+            startActivity(intent, options.toBundle())
+            finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainScope.cancel()
     }
 }

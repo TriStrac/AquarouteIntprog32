@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Aquaroute</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header1">Delivery Management</string>
+    <string name="header2">Order Tracking</string>
+    <string name="header3">Get Started</string>
+    <string name="description1">Efficiently manage routes and schedules to ensure timely and cost-effective water deliveries to your customers.</string>
+    <string name="description2">Keep track of your orders in real-time from dispatch to delivery, ensuring transparency and reliability.</string>
+    <string name="description3">Create your profile and begin managing your water deliveries with ease. Join Aquaroute and enhance your service today!</string>
 </resources>
