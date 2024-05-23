@@ -15,4 +15,5 @@
     <color name="bottom_nav_unselected_color">#FF9E9E9E</color>
     <color name="inactive">#C4C4C4</color>
     <color name="active">#50C2C9</color>
+    <color name="colorprimary">#4F616D</color>
 </resources>

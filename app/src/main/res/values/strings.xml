@@ -6,4 +6,5 @@
     <string name="description1">Efficiently manage routes and schedules to ensure timely and cost-effective water deliveries to your customers.</string>
     <string name="description2">Keep track of your orders in real-time from dispatch to delivery, ensuring transparency and reliability.</string>
     <string name="description3">Create your profile and begin managing your water deliveries with ease. Join Aquaroute and enhance your service today!</string>
+    <string name="back_button">back button</string>
 </resources>
