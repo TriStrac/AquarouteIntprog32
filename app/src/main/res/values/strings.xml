@@ -15,4 +15,5 @@
     <string name="already_have">Already have an Account? <font color="#35618E">Sign in</font></string>
     <string name="i_am_station_manager">No, I am a Customer</string>
     <string name="i_am_customer">No, I am a Station Manager</string>
+    <string name="back_button">back button</string>
 </resources>

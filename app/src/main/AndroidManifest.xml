@@ -19,6 +19,12 @@
             android:name=".RegisterChoicePage"
             android:exported="false" />
         <activity
+            android:name=".CustomerRegistrationPage2"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerRegistrationPage"
+            android:exported="false" />
+        <activity
             android:name=".CreateAccountPage"
             android:exported="false" />
         <activity
