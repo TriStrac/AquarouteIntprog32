@@ -1,5 +1,6 @@
 package com.cansal.aquaroute
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
@@ -32,6 +33,7 @@ class OnboardPage : AppCompatActivity() {
         fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
 
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -50,14 +52,16 @@ class OnboardPage : AppCompatActivity() {
 
         binding.loginAccount.setOnClickListener {
             val intent = Intent(this@OnboardPage, LoginPage::class.java)
-            startActivity(intent)
-            finish() // Optional: Finish the current activity after starting the new one
+            val options = ActivityOptions.makeCustomAnimation(this@OnboardPage, R.anim.slide_in_right, R.anim.slide_out_left)
+            startActivity(intent, options.toBundle())
+            finish()
         }
 
         binding.createAccount.setOnClickListener {
             val intent = Intent(this@OnboardPage, CreateAccountPage::class.java)
-            startActivity(intent)
-            finish() // Optional: Finish the current activity after starting the new one
+            val options = ActivityOptions.makeCustomAnimation(this@OnboardPage, R.anim.slide_in_right, R.anim.slide_out_left)
+            startActivity(intent, options.toBundle())
+            finish()
         }
 
 
@@ -66,6 +70,11 @@ class OnboardPage : AppCompatActivity() {
 
         setUpIndicator(0)
         binding.onBoardViewPager.registerOnPageChangeCallback(viewListener)
+
+        val targetPage = intent.getIntExtra("targetPage", -1)
+        if (targetPage != -1) {
+            binding.onBoardViewPager.setCurrentItem(targetPage, false)
+        }
     }
 
     private fun setUpIndicator(position: Int) {

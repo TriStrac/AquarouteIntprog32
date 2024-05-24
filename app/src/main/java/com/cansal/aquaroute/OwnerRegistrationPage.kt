@@ -7,12 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.cansal.aquaroute.databinding.ActivityCreateAccountPageBinding
+import com.cansal.aquaroute.databinding.ActivityLoginPageBinding
+import com.cansal.aquaroute.databinding.ActivityOwnerRegistrationPageBinding
 
-class CreateAccountPage : AppCompatActivity() {
-    private lateinit var binding:ActivityCreateAccountPageBinding
+class OwnerRegistrationPage : AppCompatActivity() {
+    private lateinit var binding:ActivityOwnerRegistrationPageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityCreateAccountPageBinding.inflate(layoutInflater)
+        binding = ActivityOwnerRegistrationPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
@@ -22,11 +23,14 @@ class CreateAccountPage : AppCompatActivity() {
             insets
         }
 
-        binding.nextPageRegister.setOnClickListener {
-            val intent = Intent(this@CreateAccountPage, RegisterChoicePage::class.java)
-            val options = ActivityOptions.makeCustomAnimation(this@CreateAccountPage, R.anim.slide_in_right, R.anim.slide_out_left)
+        binding.backButtonOwnerRegistration.setOnClickListener {
+            val intent = Intent(this@OwnerRegistrationPage, RegisterChoicePage::class.java).apply {
+                putExtra("targetPage", 2)
+            }
+            val options = ActivityOptions.makeCustomAnimation(this@OwnerRegistrationPage, R.anim.slide_in_left, R.anim.slide_out_right)
             startActivity(intent, options.toBundle())
             finish()
         }
+
     }
 }

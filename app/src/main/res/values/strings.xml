@@ -6,4 +6,13 @@
     <string name="description1">Efficiently manage routes and schedules to ensure timely and cost-effective water deliveries to your customers.</string>
     <string name="description2">Keep track of your orders in real-time from dispatch to delivery, ensuring transparency and reliability.</string>
     <string name="description3">Create your profile and begin managing your water deliveries with ease. Join Aquaroute and enhance your service today!</string>
+    <string name="header2_1">I’m a Customer!</string>
+    <string name="header2_2">I’m a Station Manager!</string>
+    <string name="description2_1">This option is for individuals who want to conveniently order water for delivery to their homes or businesses, providing them with easy access to quality water without the hassle of going to a store.</string>
+    <string name="description2_2">This option is tailored for station managers who oversee water delivery operations, enabling them to efficiently manage orders, track deliveries, and ensure smooth logistics for their customers\' satisfaction.</string>
+    <string name="first_things_first">First things first!\n...Who are you?</string>
+    <string name="sign_up_message">Don\'t have an Account? <font color="#35618E">Sign up</font></string>
+    <string name="already_have">Already have an Account? <font color="#35618E">Sign in</font></string>
+    <string name="i_am_station_manager">No, I am a Customer</string>
+    <string name="i_am_customer">No, I am a Station Manager</string>
 </resources>

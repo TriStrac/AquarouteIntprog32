@@ -1,5 +1,6 @@
 package com.cansal.aquaroute
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +28,22 @@ class LoginPage : AppCompatActivity() {
             }
         }
 
+        binding.backButtonLogin.setOnClickListener {
+            val intent = Intent(this@LoginPage, OnboardPage::class.java).apply {
+                putExtra("targetPage", 2)
+            }
+            val options = ActivityOptions.makeCustomAnimation(this@LoginPage, R.anim.slide_in_left, R.anim.slide_out_right)
+            startActivity(intent, options.toBundle())
+            finish()
+        }
+        binding.registrationButton.setOnClickListener {
+            val intent = Intent(this@LoginPage, RegisterChoicePage::class.java).apply {
+                putExtra("targetPage", 2)
+            }
+            val options = ActivityOptions.makeCustomAnimation(this@LoginPage, R.anim.slide_in_right, R.anim.slide_out_left)
+            startActivity(intent, options.toBundle())
+            finish()
+        }
     }
 
     private fun successfulLogin(): Boolean {
