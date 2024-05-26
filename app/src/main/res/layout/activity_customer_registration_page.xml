@@ -1,149 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomerRegistrationPage">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="9:30"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
 
-        <View
-            android:id="@+id/camera"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@drawable/baseline_camera_24"
-            android:layout_centerHorizontal="true"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
 
-        <ImageView
-            android:id="@+id/wifiIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_wifi"
-            android:layout_toStartOf="@id/signalIcon"
-            android:layout_marginEnd="2dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
-        <ImageView
-            android:id="@+id/signalIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_signal"
-            android:layout_toStartOf="@id/batteryIcon"
-            android:layout_marginEnd="2dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
 
-        <ImageView
-            android:id="@+id/batteryIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_battery"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="0dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/arrow_back_border"
-            android:contentDescription="@string/back_button"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/baseline_arrow_back"
-            android:layout_marginBottom="16dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/backButton">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+    <Button
+        android:id="@+id/continuePage2"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_primary"
+        android:padding="20dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/registrationButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello, Customer!"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="24dp" />
+    <Button
+        android:id="@+id/registrationButton"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:text="@string/already_have"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/guideline18"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create your AquaRoute account"
-                    android:layout_marginTop="8dp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/emailInputText"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textSize="20dp"
-                    android:layout_marginTop="8dp" />
+    <EditText
+        android:id="@+id/passwordInputText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/glow_input_grey"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toBottomOf="@+id/emailInputText" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:background="@drawable/edittext_background"
-                    android:padding="12dp" />
+    <EditText
+        android:id="@+id/emailInputText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/glow_input_grey"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="text"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/passwordInputText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Password"
-                    android:textSize="20dp"
-                    android:layout_marginTop="8dp" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/passwordInputText"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:background="@drawable/edittext_background"
-                    android:padding="12dp" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="258dp"
+        android:layout_height="33dp"
+        android:text="By continuing, you're agreeing to these Terms of Service and Privacy Policy"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:fontFamily=""
-                    android:text="By continuing, you're agreeing to these Terms of Service and Privacy Policy"
-                    android:layout_marginTop="16dp"
-                    android:textSize="12sp" />
+    <Button
+        android:id="@+id/backButtonCustomerRegistration"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/white_back"
+        android:drawableStart="@drawable/baseline_navigate_prev"
+        android:drawablePadding="10dp"
+        android:elevation="10dp"
+        android:paddingLeft="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Continue"
-                    android:background="@drawable/button_background"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="24dp" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/greet_customer"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Already have an account? Sign in"
-                    android:textColor="#35618E"
-                    android:textStyle="bold"
-                    android:layout_marginTop="24dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </ScrollView>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/station_manager_sub"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

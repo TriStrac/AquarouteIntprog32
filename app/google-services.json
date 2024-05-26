@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "286885084167",
+    "firebase_url": "https://aquaroute-e56a1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "aquaroute-e56a1",
+    "storage_bucket": "aquaroute-e56a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286885084167:android:8fe73624d6cad6f9847ea2",
+        "android_client_info": {
+          "package_name": "com.cansal.aquaroute"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpzyLQu3Omi3K1yS9CQpEoQQYKHWKK3wA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
