@@ -16,5 +16,5 @@
     <color name="inactive">#C4C4C4</color>
     <color name="active">#FF35618E</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="colorprimary">#4F616D</color>
+    <color name="colorprimary">#FF4F616D</color>
 </resources>

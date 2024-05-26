@@ -45,20 +45,19 @@ class RegisterChoicePage : AppCompatActivity() {
         }
         binding.proceedRegisterChoice.setOnClickListener {
             if (binding.choicePageViewer.currentItem < 1) {
-
+                val intent = Intent(this@RegisterChoicePage, CustomerRegistrationPage::class.java)
+                val options = ActivityOptions.makeCustomAnimation(this@RegisterChoicePage, R.anim.slide_in_right, R.anim.slide_out_left)
+                startActivity(intent, options.toBundle())
+                finish()
             }else if (binding.choicePageViewer.currentItem > 0) {
-                val intent = Intent(this@RegisterChoicePage, OwnerRegistrationPage::class.java).apply {
-                    putExtra("targetPage", 2)
-                }
+                val intent = Intent(this@RegisterChoicePage, OwnerRegistrationPage::class.java)
                 val options = ActivityOptions.makeCustomAnimation(this@RegisterChoicePage, R.anim.slide_in_right, R.anim.slide_out_left)
                 startActivity(intent, options.toBundle())
                 finish()
             }
         }
         binding.backButtonChoices.setOnClickListener {
-            val intent = Intent(this@RegisterChoicePage, LoginPage::class.java).apply {
-                putExtra("targetPage", 2)
-            }
+            val intent = Intent(this@RegisterChoicePage, LoginPage::class.java)
             val options = ActivityOptions.makeCustomAnimation(this@RegisterChoicePage, R.anim.slide_in_left, R.anim.slide_out_right)
             startActivity(intent, options.toBundle())
             finish()

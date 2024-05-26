@@ -16,4 +16,15 @@
     <string name="i_am_station_manager">No, I am a Customer</string>
     <string name="i_am_customer">No, I am a Station Manager</string>
     <string name="back_button">back button</string>
+    <string name="build_your_station_profile">Build your Station Profile</string>
+    <string name="buld_your_profile_sub">This will help you get discovered by \ncustomers on our platform</string>
+    <string name="add_your_station_address">Add your Station Address</string>
+    <string name="add_station_address_sub">This will help you get discovered by \ncustomers on our platform</string>
+    <string name="add_your_contact_details">Add your Contact Details</string>
+    <string name="add_contact_sub">Help customers get in touchby including \nthis info on your listing</string>
+    <string name="hello_station_manager">Hello, Station Manager!</string>
+    <string name="station_manager_sub">Create your Aquaroute account</string>
+    <string name="greet_customer">Hello, Customer!</string>
+    <string name="add_home">Add your home address</string>
+    <string name="add_home_sub">We\'ll use this information for deliveries</string>
 </resources>
