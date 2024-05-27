@@ -1,5 +1,7 @@
 package com.cansal.aquaroute
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +9,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cansal.aquaroute.databinding.ActivityWelcomeToHomeRedirectorPageBinding
 import com.cansal.aquaroute.storage.LocalStorage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class WelcomeToHomeRedirectorPage : AppCompatActivity() {
     private lateinit var binding:ActivityWelcomeToHomeRedirectorPageBinding
-    private val localStorage= LocalStorage(this)
+    private val mainScope = CoroutineScope(Dispatchers.Main)
+    private val localStorage = LocalStorage(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityWelcomeToHomeRedirectorPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -27,13 +35,33 @@ class WelcomeToHomeRedirectorPage : AppCompatActivity() {
         }
         val name = getFirstName(intent.getStringExtra("loggedInName"))
         binding.welcomeText.text = "Welcome!\n\n$name"
+        val type = intent.getStringExtra("loggedInType")
+
+        mainScope.launch {
+            delay(1000)
+            if(type == "owner"){
+                val intent = Intent(this@WelcomeToHomeRedirectorPage, OwnerDashboard::class.java)
+                val options = ActivityOptions.makeCustomAnimation(this@WelcomeToHomeRedirectorPage, R.anim.fade_in, R.anim.fade_out)
+                startActivity(intent, options.toBundle())
+                finish()
+            }else if(type == "customer"){
+                val intent = Intent(this@WelcomeToHomeRedirectorPage, CustomerDashboard::class.java)
+                val options = ActivityOptions.makeCustomAnimation(this@WelcomeToHomeRedirectorPage, R.anim.fade_in, R.anim.fade_out)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
+
+        }
 
 
     }
-
+    override fun onDestroy() {
+        super.onDestroy()
+        mainScope.cancel()
+    }
     fun getFirstName(fullName: String?): String {
-        val trimmedName = fullName?.trim()  // Remove leading/trailing spaces
-        if (trimmedName!!.isEmpty()) return ""  // Return an empty string if input is empty
+        val trimmedName = fullName?.trim()
+        if (trimmedName!!.isEmpty()) return ""
         return trimmedName.split(" ")[0]
     }
 }
