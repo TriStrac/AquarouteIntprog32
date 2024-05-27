@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class LandingPage : AppCompatActivity() {
     private lateinit var binding: ActivityLandingPageBinding
     private val mainScope = CoroutineScope(Dispatchers.Main)
-    private val localStorage = LocalStorage(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLandingPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class LandingPage : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        val localStorage = LocalStorage(this)
         if(!localStorage.appFirstOpen){
             mainScope.launch {
                 delay(1000)

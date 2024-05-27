@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class WelcomeToHomeRedirectorPage : AppCompatActivity() {
     private lateinit var binding:ActivityWelcomeToHomeRedirectorPageBinding
     private val mainScope = CoroutineScope(Dispatchers.Main)
-    private val localStorage = LocalStorage(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityWelcomeToHomeRedirectorPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -30,6 +30,7 @@ class WelcomeToHomeRedirectorPage : AppCompatActivity() {
             insets
         }
 
+        val localStorage=LocalStorage(this)
         if(localStorage.appFirstOpen){
             localStorage.appFirstOpen=false
         }
