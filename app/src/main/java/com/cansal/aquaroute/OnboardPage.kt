@@ -30,6 +30,8 @@ class OnboardPage : AppCompatActivity() {
         setContentView(binding.root)
         enableEdgeToEdge()
 
+
+
         fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
 

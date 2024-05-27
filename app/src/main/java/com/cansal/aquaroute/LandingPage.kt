@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cansal.aquaroute.databinding.ActivityLandingPageBinding
+import com.cansal.aquaroute.storage.LocalStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 class LandingPage : AppCompatActivity() {
     private lateinit var binding: ActivityLandingPageBinding
     private val mainScope = CoroutineScope(Dispatchers.Main)
-
+    private val localStorage = LocalStorage(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLandingPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -29,8 +30,18 @@ class LandingPage : AppCompatActivity() {
             insets
         }
 
+        if(!localStorage.appFirstOpen){
+            mainScope.launch {
+                delay(1000)
+                val intent = Intent(this@LandingPage, LoginPage::class.java)
+                val options = ActivityOptions.makeCustomAnimation(this@LandingPage, R.anim.fade_in, R.anim.fade_out)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
+        }
+
         mainScope.launch {
-            delay(1500)
+            delay(1000)
             val intent = Intent(this@LandingPage, OnboardPage::class.java)
             val options = ActivityOptions.makeCustomAnimation(this@LandingPage, R.anim.fade_in, R.anim.fade_out)
             startActivity(intent, options.toBundle())
