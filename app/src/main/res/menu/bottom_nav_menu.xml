@@ -2,19 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/delivery1"
-        android:icon="@drawable/delivery_icon"
-        android:title="Deliveries" />
+        android:id="@+id/dashboard"
+        android:icon="@drawable/outline_space_dashboard_24"
+        android:title="Dashboard" />
     <item
-        android:id="@+id/client2"
-        android:icon="@drawable/client_icon"
-        android:title="Clients" />
+        android:id="@+id/messages"
+        android:icon="@drawable/outline_chat_24"
+        android:title="Messages" />
     <item
-        android:id="@+id/analytic3"
-        android:icon="@drawable/analytics_icon"
-        android:title="Analytics" />
-    <item
-        android:id="@+id/transaction4"
-        android:icon="@drawable/transaction_icon"
-        android:title="Transactions" />
+        android:id="@+id/orders"
+        android:icon="@drawable/orders"
+        android:title="Orders" />
+
 </menu>

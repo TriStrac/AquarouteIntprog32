@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.circleImageView)
     implementation(libs.androidx.security.crypto)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

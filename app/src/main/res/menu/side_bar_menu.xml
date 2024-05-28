@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
+        android:icon="@drawable/outline_settings_24"/>
+
+    <item
+        android:id="@+id/nav_sign_out"
+        android:title="Sign Out"
+        android:icon="@drawable/baseline_logout_24"/>
+</menu>

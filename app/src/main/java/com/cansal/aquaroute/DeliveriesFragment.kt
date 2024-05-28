@@ -34,7 +34,7 @@ class DeliveriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_deliveries, container, false)
+        return inflater.inflate(R.layout.fragment_dashboard_owner, container, false)
     }
 
     companion object {

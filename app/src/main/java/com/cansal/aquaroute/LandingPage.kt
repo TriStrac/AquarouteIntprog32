@@ -38,15 +38,17 @@ class LandingPage : AppCompatActivity() {
                 startActivity(intent, options.toBundle())
                 finish()
             }
+        }else{
+            mainScope.launch {
+                delay(1000)
+                val intent = Intent(this@LandingPage, OnboardPage::class.java)
+                val options = ActivityOptions.makeCustomAnimation(this@LandingPage, R.anim.fade_in, R.anim.fade_out)
+                startActivity(intent, options.toBundle())
+                finish()
+            }
         }
 
-        mainScope.launch {
-            delay(1000)
-            val intent = Intent(this@LandingPage, OnboardPage::class.java)
-            val options = ActivityOptions.makeCustomAnimation(this@LandingPage, R.anim.fade_in, R.anim.fade_out)
-            startActivity(intent, options.toBundle())
-            finish()
-        }
+
     }
 
     override fun onDestroy() {

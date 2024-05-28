@@ -49,10 +49,7 @@
             android:name=".OnboardPage"
             android:exported="false" />
         <activity
-            android:name=".AccountPage"
-            android:exported="false" />
-        <activity
-            android:name=".HomePage"
+            android:name=".SettingsPage"
             android:exported="false" />
         <activity
             android:name=".LoginPage"

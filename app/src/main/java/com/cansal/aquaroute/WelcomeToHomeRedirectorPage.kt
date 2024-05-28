@@ -37,16 +37,25 @@ class WelcomeToHomeRedirectorPage : AppCompatActivity() {
         val name = getFirstName(intent.getStringExtra("loggedInName"))
         binding.welcomeText.text = "Welcome!\n\n$name"
         val type = intent.getStringExtra("loggedInType")
+        val email = intent.getStringExtra("loggedInEmail")
 
         mainScope.launch {
             delay(1000)
             if(type == "owner"){
-                val intent = Intent(this@WelcomeToHomeRedirectorPage, OwnerDashboard::class.java)
+                val intent = Intent(this@WelcomeToHomeRedirectorPage, OwnerDashboard::class.java).apply{
+                    putExtra("loggedInName", name)
+                    putExtra("loggedInEmail", email)
+                    putExtra("loggedInType", type)
+                }
                 val options = ActivityOptions.makeCustomAnimation(this@WelcomeToHomeRedirectorPage, R.anim.fade_in, R.anim.fade_out)
                 startActivity(intent, options.toBundle())
                 finish()
             }else if(type == "customer"){
-                val intent = Intent(this@WelcomeToHomeRedirectorPage, CustomerDashboard::class.java)
+                val intent = Intent(this@WelcomeToHomeRedirectorPage, CustomerDashboard::class.java).apply{
+                    putExtra("loggedInName", name)
+                    putExtra("loggedInEmail", email)
+                    putExtra("loggedInType", type)
+                }
                 val options = ActivityOptions.makeCustomAnimation(this@WelcomeToHomeRedirectorPage, R.anim.fade_in, R.anim.fade_out)
                 startActivity(intent, options.toBundle())
                 finish()

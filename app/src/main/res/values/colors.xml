@@ -17,4 +17,6 @@
     <color name="active">#FF35618E</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="colorprimary">#FF4F616D</color>
+    <color name="underline">#FFBDB8B8</color>
+    <color name="dashboardBG">#FFF8F9FF</color>
 </resources>
