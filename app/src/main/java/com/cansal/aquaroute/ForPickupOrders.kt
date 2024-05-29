@@ -1,59 +1,64 @@
 package com.cansal.aquaroute
 
+import PickUpRecyclerViewAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cansal.aquaroute.databinding.FragmentForPickupOrdersBinding
+import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ForPickupOrders.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ForPickupOrders : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: FragmentForPickupOrdersBinding
+    private lateinit var adapter: PickUpRecyclerViewAdapter
+    private lateinit var ordersList: List<OrdersForOwnerToCustomer>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_for_pickup_orders, container, false)
+        binding = FragmentForPickupOrdersBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ForPickupOrders.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ForPickupOrders().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize ordersList with your data
+        ordersList = listOf(
+            OrdersForOwnerToCustomer("John Doe", "john@example.com", 5, "123 Main St", "Owner", "owner@example.com", "Pending", "Pending"),
+            OrdersForOwnerToCustomer("Jane Smith", "jane@example.com", 4, "456 Oak St", "Owner", "owner@example.com", "Pending", "Pending")
+            // Add more orders here
+        )
+
+        adapter = PickUpRecyclerViewAdapter(
+            activity = requireActivity(),
+            ordersList = ordersList,
+            confirmPickUp = this::confirmPickUp,
+            cancelPickUp = this::cancelPickUp
+        )
+
+        binding.pickUpRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.pickUpRecyclerView.adapter = adapter
+    }
+
+    private fun confirmPickUp(order: OrdersForOwnerToCustomer) {
+        // Handle the confirmation of pickup
+        Toast.makeText(context, "Pickup confirmed for ${order.customerName}", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun cancelPickUp(order: OrdersForOwnerToCustomer) {
+        // Handle the cancellation of pickup
+        Toast.makeText(context, "Pickup cancelled for ${order.customerName}", Toast.LENGTH_SHORT).show()
     }
 }
+

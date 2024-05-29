@@ -9,24 +9,23 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/topTab"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dashboardBG"
         style="@style/Theme.Aquaroute"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="For Pickup" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contacts" />
+            android:text="For Delivery" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

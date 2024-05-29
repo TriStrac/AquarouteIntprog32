@@ -207,7 +207,7 @@
                 android:drawablePadding="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="Deliveries"
+                android:text="For Delivery"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toTopOf="@+id/verticalLine1"
@@ -270,21 +270,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.8" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.95" />
 
     <TextView
         android:id="@+id/textView14"
@@ -315,7 +315,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.42" />
+        app:layout_constraintGuide_percent="0.47" />
 
     <ImageView
         android:id="@+id/imageView8"

@@ -13,24 +13,24 @@ class OrdersOwnerFragment : Fragment() {
     private var _binding: FragmentOrdersOwnerBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = FragmentOrdersOwnerBinding.inflate(layoutInflater)
-
-        binding.topTab.setupWithViewPager(binding.ordersViewPager)
-
-        val adapter = OrdersOwnerAdapter(childFragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
-        adapter.addFragment(ForPickupOrders(),"For Pickup")
-        adapter.addFragment(ContactsOrders(),"Contacts")
-
-        binding.ordersViewPager.adapter=adapter
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentOrdersOwnerBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = OrdersOwnerAdapter(childFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+        adapter.addFragment(ForPickupOrders(), "For Pickup")
+        adapter.addFragment(ForDeliveryOrders(), "Contacts")
+
+        binding.ordersViewPager.adapter = adapter
+
+        binding.topTab.setupWithViewPager(binding.ordersViewPager)
     }
 
     override fun onDestroyView() {
@@ -38,4 +38,5 @@ class OrdersOwnerFragment : Fragment() {
         _binding = null
     }
 }
+
 
