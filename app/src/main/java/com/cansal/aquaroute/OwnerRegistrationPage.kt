@@ -41,10 +41,11 @@ class OwnerRegistrationPage : AppCompatActivity() {
         binding.continuePage2.setOnClickListener {
             val email = binding.emailInputText.text.toString()
             val password = binding.passwordInputText.text.toString()
-
+            val confirmPassword = binding.confirmPasswordInputText.text.toString()
 
             binding.emailInputText.error = null
             binding.passwordInputText.error = null
+            binding.confirmPasswordInputText.error = null
 
             var isValid = true
 
@@ -64,6 +65,14 @@ class OwnerRegistrationPage : AppCompatActivity() {
                 isValid = false
             }
 
+            if (confirmPassword.isEmpty()) {
+                binding.confirmPasswordInputText.error = "Confirm Password must not be empty"
+                isValid = false
+            } else if (password != confirmPassword) {
+                binding.confirmPasswordInputText.error = "Password does not match"
+                isValid = false
+            }
+
             if (isValid) {
                 checkEmailExists(email) { emailExists ->
                     if (emailExists) {
@@ -80,7 +89,9 @@ class OwnerRegistrationPage : AppCompatActivity() {
             }
         }
 
+
     }
+
     private fun checkEmailExists(email: String, callback: (Boolean) -> Unit) {
         val reference = FirebaseDatabase.getInstance().getReference("users")
         val checkUserDatabase = reference.orderByChild("email").equalTo(email)

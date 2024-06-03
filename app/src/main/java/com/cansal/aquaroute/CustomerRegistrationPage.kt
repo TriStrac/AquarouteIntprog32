@@ -40,10 +40,11 @@ class CustomerRegistrationPage : AppCompatActivity() {
         binding.continuePage2.setOnClickListener {
             val email = binding.emailInputText.text.toString()
             val password = binding.passwordInputText.text.toString()
-
+            val confirmPassword = binding.confirmPasswordInputText.text.toString()
 
             binding.emailInputText.error = null
             binding.passwordInputText.error = null
+            binding.confirmPasswordInputText.error = null
 
             var isValid = true
 
@@ -63,6 +64,14 @@ class CustomerRegistrationPage : AppCompatActivity() {
                 isValid = false
             }
 
+            if (confirmPassword.isEmpty()) {
+                binding.confirmPasswordInputText.error = "Confirm Password must not be empty"
+                isValid = false
+            } else if (password != confirmPassword) {
+                binding.confirmPasswordInputText.error = "Password does not match"
+                isValid = false
+            }
+
             if (isValid) {
                 checkEmailExists(email) { emailExists ->
                     if (emailExists) {
@@ -78,6 +87,7 @@ class CustomerRegistrationPage : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     private fun isValidEmail(email: String): Boolean {
