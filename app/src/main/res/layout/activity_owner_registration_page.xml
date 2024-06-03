@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.61" />
 
 
     <Button
@@ -87,21 +87,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
     <EditText
-        android:id="@+id/passwordInputText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/glow_input_grey"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline19"
-        app:layout_constraintEnd_toStartOf="@+id/guideline17"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline16"
-        app:layout_constraintTop_toBottomOf="@+id/emailInputText" />
-
-    <EditText
         android:id="@+id/emailInputText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -116,6 +101,21 @@
         app:layout_constraintStart_toStartOf="@+id/guideline16"
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
+
+    <EditText
+        android:id="@+id/passwordInputText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/glow_input_grey"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toBottomOf="@+id/emailInputText" />
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -123,6 +123,29 @@
         android:text="Password"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/passwordInputText"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
+
+    <EditText
+        android:id="@+id/confirmPasswordInputText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/glow_input_grey"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInputText" />
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/confirmPasswordInputText"
         app:layout_constraintStart_toStartOf="@+id/guideline16" />
 
     <TextView

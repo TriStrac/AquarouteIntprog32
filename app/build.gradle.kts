@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.flexbox)
     implementation(libs.gson)
     implementation(libs.circleImageView)
     implementation(libs.androidx.security.crypto)

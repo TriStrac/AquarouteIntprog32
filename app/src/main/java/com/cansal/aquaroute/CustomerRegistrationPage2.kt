@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cansal.aquaroute.databinding.ActivityCustomerRegistrationPage2Binding
+import com.cansal.aquaroute.models.CustomerStock
 import com.cansal.aquaroute.models.CustomerUser
 import com.cansal.aquaroute.models.OwnerUser
 import com.google.firebase.database.DatabaseReference
@@ -16,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase
 
 class CustomerRegistrationPage2 : AppCompatActivity() {
     private lateinit var binding: ActivityCustomerRegistrationPage2Binding
-    private lateinit var database: FirebaseDatabase
-    private lateinit var reference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCustomerRegistrationPage2Binding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -106,7 +105,15 @@ class CustomerRegistrationPage2 : AppCompatActivity() {
         if (email != null) {
             val encodedEmail = encodeEmail(email)
             reference.child(encodedEmail).setValue(customerUser)
+            initializeCustomerStock(encodedEmail)
         }
+    }
+
+    private fun initializeCustomerStock(email:String){
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("customerStock")
+        val stock=CustomerStock(email,0,0,0)
+        reference.child(email).setValue(stock)
     }
 
     fun encodeEmail(email: String): String {

@@ -10,7 +10,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cansal.aquaroute.databinding.ActivityOwnerRegistrationPage4Binding
 import com.cansal.aquaroute.models.CustomerUser
+import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
 import com.cansal.aquaroute.models.OwnerUser
+import com.cansal.aquaroute.models.Subscribers
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -102,7 +104,25 @@ class OwnerRegistrationPage4 : AppCompatActivity() {
                     Log.e("OwnerAccount", "Account creation failed for email: $email", task.exception)
                 }
             }
+            initializeSubscribers(encodedEmail)
+            initializeOrders(encodedEmail)
         }
+    }
+    private fun initializeSubscribers(email:String){
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("subscribers")
+        val subsInit = Subscribers(email,"D3F4ULT","D3F4ULT","D3F4ULT","D3F4ULT")
+        reference.child(email).setValue(subsInit)
+    }
+    private fun initializeOrders(email:String){
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("orders")
+        val ordersInit = OrdersForOwnerToCustomer("D3F4ULT",
+            "D3F4ULT","D3F4ULT","D3F4ULT",
+            "D3F4ULT","D3F4ULT","D3F4ULT",
+            "D3F4ULT","D3F4ULT",email,"D3F4ULT",
+            "D3F4ULT")
+        reference.child(email).setValue(ordersInit)
     }
 
     fun encodeEmail(email: String): String {
