@@ -1,6 +1,7 @@
 package com.cansal.aquaroute
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,6 @@ import androidx.core.view.WindowInsetsCompat
 class OwnerHistoryPage : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerHistoryPageBinding
     private lateinit var adapter: HistoryRecyclerViewAdapter
-    private lateinit var ordersList: List<OrdersForOwnerToCustomer>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +28,7 @@ class OwnerHistoryPage : AppCompatActivity() {
 
         binding.backIcon.setOnClickListener {
             finish()
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
 
         // Initialize ordersList with your data
@@ -42,7 +43,7 @@ class OwnerHistoryPage : AppCompatActivity() {
                 "6:00 PM",
                 "Owner 1",
                 "owner1@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
@@ -55,7 +56,7 @@ class OwnerHistoryPage : AppCompatActivity() {
                 "5:00 PM",
                 "Owner 2",
                 "owner2@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
@@ -68,7 +69,7 @@ class OwnerHistoryPage : AppCompatActivity() {
                 "4:00 PM",
                 "Owner 3",
                 "owner3@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
@@ -81,7 +82,7 @@ class OwnerHistoryPage : AppCompatActivity() {
                 "3:00 PM",
                 "Owner 4",
                 "owner4@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
@@ -94,26 +95,17 @@ class OwnerHistoryPage : AppCompatActivity() {
                 "2:00 PM",
                 "Owner 5",
                 "owner5@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             )
         )
 
 
-        // Filter the ordersList
-        val filteredOrders = ordersList.filter {
-            it.orderPickupStatus == "Cancelled" || it.orderDeliveryStatus == "Completed"
-        }
-
         // Initialize the adapter with filtered data
-        adapter = HistoryRecyclerViewAdapter(activity = this, ordersList = filteredOrders)
+        adapter = HistoryRecyclerViewAdapter(this, ordersList)
 
         // Set up the RecyclerView with the adapter
         binding.historyRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.historyRecyclerView.adapter = adapter
-    }
-
-    private fun enableEdgeToEdge() {
-        // Your implementation to enable edge-to-edge content
     }
 }

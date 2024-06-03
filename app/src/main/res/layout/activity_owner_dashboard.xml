@@ -49,7 +49,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/accountIcon"
+                    android:id="@+id/multiIconTopRight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/dashboardBG"
         style="@style/Theme.Aquaroute"
+        android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

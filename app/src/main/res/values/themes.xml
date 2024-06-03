@@ -50,4 +50,8 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Material3.LargeComponent</item>
     </style>
+
+    <style name="RoundedAlertDialog" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:background">@drawable/white_back</item>
+    </style>
 </resources>

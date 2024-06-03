@@ -21,6 +21,7 @@ class SettingsPage : AppCompatActivity() {
         }
         binding.backIcon.setOnClickListener {
             finish()
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
     }
 }

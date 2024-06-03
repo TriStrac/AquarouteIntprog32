@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.cansal.aquaroute.R
 import com.cansal.aquaroute.databinding.DialogOrderDetailsBinding
 import com.cansal.aquaroute.databinding.PickupDeliveryRecycleLayoutBinding
 import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
@@ -58,18 +59,23 @@ class PickUpRecyclerViewAdapter(
         }
 
         private fun showOrderDetailsDialog(order: OrdersForOwnerToCustomer) {
-            val dialogBinding = DialogOrderDetailsBinding.inflate(LayoutInflater.from(activity))
-            val builder = AlertDialog.Builder(activity)
-            builder.setView(dialogBinding.root)
+            val inflater = LayoutInflater.from(activity)
+            val dialogBinding = DialogOrderDetailsBinding.inflate(inflater)
+
+            val alertDialogBuilder = AlertDialog.Builder(activity)
+            val dialog = alertDialogBuilder.create()
+
+            dialog.setView(dialogBinding.root)
+
+            dialog.window?.setBackgroundDrawableResource(R.drawable.white_back)
 
             dialogBinding.customerNameText.text = "Customer Name: ${order.customerName}"
             dialogBinding.orderAmountText.text = "Quantity of Jugs: ${order.orderAmount}"
             dialogBinding.paymentText.text = "Payment: ${order.orderCost}"
-            dialogBinding.orderStatusText.text = "Order Status: For Pickup" // Or retrieve the actual status if you have it
+            dialogBinding.orderStatusText.text = "Order Status: For Pickup"
             dialogBinding.deliveryTimeText.text = "Delivery Time: ${order.deliveryTime}"
             dialogBinding.addressText.text = "Address: ${order.customerAddress}"
 
-            val dialog = builder.create()
             dialogBinding.okButton.setOnClickListener {
                 dialog.dismiss()
             }

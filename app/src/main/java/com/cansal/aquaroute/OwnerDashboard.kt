@@ -13,6 +13,7 @@ import com.cansal.aquaroute.databinding.ActivityOwnerDashboardBinding
 class OwnerDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerDashboardBinding
     private lateinit var toggle: ActionBarDrawerToggle
+    private var state = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityOwnerDashboardBinding.inflate(layoutInflater)
@@ -46,21 +47,44 @@ class OwnerDashboard : AppCompatActivity() {
             }
         }
 
+        binding.multiIconTopRight.setOnClickListener {
+            when(state){
+                1 ->{
+
+                    true
+                }
+                2 ->{
+
+                    true
+                }
+                3 ->{
+                    openHistory()
+                    true
+                }
+                else -> false
+            }
+        }
+
 
         binding.bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.dashboard -> {
-                    binding.screenName.text="Good Day, $name"
+                    state=1
+                    stateCheck()
+                    updateScreenName("Good Day, $name")
                     replaceFragment(DeliveriesFragment())
                     true
                 }
                 R.id.messages -> {
-                    binding.screenName.text="Messages"
+                    state=2
+                    stateCheck()
+                    updateScreenName("Messages")
                     replaceFragment(ClientsFragment())
                     true
                 }
                 R.id.orders -> {
-                    binding.screenName.text="Orders"
+                    state=3
+                    stateCheck()
                     replaceFragment(OrdersOwnerFragment())
                     true
                 }
@@ -68,6 +92,31 @@ class OwnerDashboard : AppCompatActivity() {
             }
         }
     }
+
+    private fun stateCheck(){
+        when(state){
+            1 ->{
+                updateMultiIcon(R.drawable.outline_notifications_24)
+                true
+            }
+            2 ->{
+                updateMultiIcon(R.drawable.baseline_search_24)
+                true
+            }
+            3 ->{
+
+            }
+        }
+    }
+
+    fun updateScreenName(text: String) {
+        binding.screenName.text = text
+    }
+
+    fun updateMultiIcon(icon:Int){
+        binding.multiIconTopRight.setImageResource(icon)
+    }
+
 
     private fun replaceFragment(fragment: Fragment){
         val fragmentManager = supportFragmentManager
@@ -81,6 +130,12 @@ class OwnerDashboard : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun openHistory(){
+        val intent = Intent(this@OwnerDashboard, OwnerHistoryPage::class.java)
+        val options = ActivityOptions.makeCustomAnimation(this@OwnerDashboard, R.anim.slide_in_right, R.anim.slide_out_left)
+        startActivity(intent, options.toBundle())
     }
 
     private fun openSettings() {

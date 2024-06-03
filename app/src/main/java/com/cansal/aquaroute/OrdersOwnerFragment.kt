@@ -27,7 +27,8 @@ class OrdersOwnerFragment : Fragment() {
         val adapter = OrdersOwnerAdapter(childFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
         adapter.addFragment(OwnerForPickupOrders(), "For Pickup")
         adapter.addFragment(OwnerForDeliveryOrders(), "For Delivery")
-
+        (activity as? OwnerDashboard)?.updateScreenName("")
+        (activity as? OwnerDashboard)?.updateMultiIcon(R.drawable.baseline_history_24)
         binding.ordersViewPager.adapter = adapter
 
         binding.topTab.setupWithViewPager(binding.ordersViewPager)
