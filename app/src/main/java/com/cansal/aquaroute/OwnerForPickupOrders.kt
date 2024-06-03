@@ -1,34 +1,37 @@
 package com.cansal.aquaroute
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cansal.aquaroute.adapters.HistoryRecyclerViewAdapter
-import com.cansal.aquaroute.databinding.ActivityOwnerHistoryPageBinding
+import com.cansal.aquaroute.adapters.PickUpRecyclerViewAdapter
+import com.cansal.aquaroute.databinding.FragmentForPickupOrdersBinding
 import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
-import androidx.core.view.WindowInsetsCompat
 
-class OwnerHistoryPage : AppCompatActivity() {
-    private lateinit var binding: ActivityOwnerHistoryPageBinding
-    private lateinit var adapter: HistoryRecyclerViewAdapter
+
+class OwnerForPickupOrders : Fragment() {
+
+    private lateinit var binding: FragmentForPickupOrdersBinding
+    private lateinit var adapter: PickUpRecyclerViewAdapter
     private lateinit var ordersList: List<OrdersForOwnerToCustomer>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOwnerHistoryPageBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        enableEdgeToEdge()
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentForPickupOrdersBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        binding.backIcon.setOnClickListener {
-            finish()
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Initialize ordersList with your data
         val ordersList = listOf(
@@ -37,7 +40,7 @@ class OwnerHistoryPage : AppCompatActivity() {
                 "john.doe@example.com",
                 "5",
                 (5 * 20).toString(),
-                "123 Main St",
+                "123 Main St, Cogon, Coeased fasdfasddas",
                 "2023-06-01",
                 "6:00 PM",
                 "Owner 1",
@@ -100,20 +103,25 @@ class OwnerHistoryPage : AppCompatActivity() {
         )
 
 
-        // Filter the ordersList
-        val filteredOrders = ordersList.filter {
-            it.orderPickupStatus == "Cancelled" || it.orderDeliveryStatus == "Completed"
-        }
+        adapter = PickUpRecyclerViewAdapter(
+            activity = requireActivity(),
+            ordersList = ordersList,
+            confirmPickUp = this::confirmPickUp,
+            cancelPickUp = this::cancelPickUp
+        )
 
-        // Initialize the adapter with filtered data
-        adapter = HistoryRecyclerViewAdapter(activity = this, ordersList = filteredOrders)
-
-        // Set up the RecyclerView with the adapter
-        binding.historyRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.historyRecyclerView.adapter = adapter
+        binding.pickUpRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.pickUpRecyclerView.adapter = adapter
     }
 
-    private fun enableEdgeToEdge() {
-        // Your implementation to enable edge-to-edge content
+    private fun confirmPickUp(order: OrdersForOwnerToCustomer) {
+        // Handle the confirmation of pickup
+        Toast.makeText(context, "Pickup confirmed for ${order.customerName}", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun cancelPickUp(order: OrdersForOwnerToCustomer) {
+        // Handle the cancellation of pickup
+        Toast.makeText(context, "Pickup cancelled for ${order.customerName}", Toast.LENGTH_SHORT).show()
     }
 }
+

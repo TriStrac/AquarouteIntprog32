@@ -198,16 +198,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/verticalLine1" />
 
             <Button
-                android:id="@+id/deliveriesQuickActions"
+                android:id="@+id/contactsQuickActions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/deliveries"
+                android:drawableLeft="@drawable/outline_contacts_24"
                 android:drawableRight="@drawable/baseline_play_arrow_24"
                 android:drawablePadding="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="For Delivery"
+                android:text="Contacts"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toTopOf="@+id/verticalLine1"

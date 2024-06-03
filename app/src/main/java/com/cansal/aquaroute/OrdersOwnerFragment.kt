@@ -25,8 +25,8 @@ class OrdersOwnerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = OrdersOwnerAdapter(childFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
-        adapter.addFragment(ForPickupOrders(), "For Pickup")
-        adapter.addFragment(ForDeliveryOrders(), "Contacts")
+        adapter.addFragment(OwnerForPickupOrders(), "For Pickup")
+        adapter.addFragment(OwnerForDeliveryOrders(), "For Delivery")
 
         binding.ordersViewPager.adapter = adapter
 

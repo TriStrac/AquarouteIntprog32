@@ -20,4 +20,6 @@
     <color name="underline">#FFBDB8B8</color>
     <color name="dashboardBG">#FFF8F9FF</color>
     <color name="fabColor">#FFD1E4FF</color>
+    <color name="cancel">#FFFFDAD6</color>
+    <color name="pickOrDeliver">#FFD6E3F7</color>
 </resources>

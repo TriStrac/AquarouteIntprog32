@@ -1,9 +1,12 @@
+package com.cansal.aquaroute.adapters
+
 import android.app.Activity
 import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.cansal.aquaroute.databinding.DialogOrderDetailsBinding
 import com.cansal.aquaroute.databinding.PickupDeliveryRecycleLayoutBinding
 import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
 
@@ -20,10 +23,11 @@ class PickUpRecyclerViewAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(order: OrdersForOwnerToCustomer, confirmPickUp: (OrdersForOwnerToCustomer) -> Unit, cancelPickUp: (OrdersForOwnerToCustomer) -> Unit) {
-            val amount= order.orderAmount * 20
             binding.customerNameText.text = order.customerName
-            binding.customerOrderText.text = "${order.orderAmount} Jugs (P$amount)"
-            binding.customerAddressText.text = order.customerAddress
+            binding.customerOrderText.text = "${order.orderAmount} Jugs"
+            binding.customerAddressText.text = order.customerAddress.take(20)
+            binding.deliveryCostText.text = "${order.orderCost} PHP"
+            binding.deliveryTimeText.text = "Delivery time: ${order.deliveryTime}"
 
             binding.acceptButton.setOnClickListener {
                 showConfirmDialog("Confirm pickup completion?", order, confirmPickUp)
@@ -31,6 +35,10 @@ class PickUpRecyclerViewAdapter(
 
             binding.declineButton.setOnClickListener {
                 showConfirmDialog("Confirm cancellation of pickup?", order, cancelPickUp)
+            }
+
+            itemView.setOnClickListener {
+                showOrderDetailsDialog(order)
             }
         }
 
@@ -48,15 +56,31 @@ class PickUpRecyclerViewAdapter(
                 show()
             }
         }
+
+        private fun showOrderDetailsDialog(order: OrdersForOwnerToCustomer) {
+            val dialogBinding = DialogOrderDetailsBinding.inflate(LayoutInflater.from(activity))
+            val builder = AlertDialog.Builder(activity)
+            builder.setView(dialogBinding.root)
+
+            dialogBinding.customerNameText.text = "Customer Name: ${order.customerName}"
+            dialogBinding.orderAmountText.text = "Quantity of Jugs: ${order.orderAmount}"
+            dialogBinding.paymentText.text = "Payment: ${order.orderCost}"
+            dialogBinding.orderStatusText.text = "Order Status: For Pickup" // Or retrieve the actual status if you have it
+            dialogBinding.deliveryTimeText.text = "Delivery Time: ${order.deliveryTime}"
+            dialogBinding.addressText.text = "Address: ${order.customerAddress}"
+
+            val dialog = builder.create()
+            dialogBinding.okButton.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrdersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = PickupDeliveryRecycleLayoutBinding.inflate(
-            inflater,
-            parent,
-            false
-        )
+        val binding = PickupDeliveryRecycleLayoutBinding.inflate(inflater, parent, false)
         return OrdersViewHolder(activity, binding)
     }
 

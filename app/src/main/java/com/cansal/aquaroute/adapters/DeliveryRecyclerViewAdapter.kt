@@ -15,12 +15,6 @@ class DeliveryRecyclerViewAdapter(
     private val confirmPickUp: (OrdersForOwnerToCustomer) -> Unit,
     private val cancelPickUp: (OrdersForOwnerToCustomer) -> Unit
 ) : RecyclerView.Adapter<DeliveryRecyclerViewAdapter.DeliveryViewHolder>() {
-
-    init {
-        // Filter the list to only include orders with orderPickupStatus as "Done"
-        ordersList = ordersList.filter { it.orderPickupStatus == "Done" }
-    }
-
     class DeliveryViewHolder(
         private val activity: Activity,
         private val binding: PickupDeliveryRecycleLayoutBinding
@@ -28,8 +22,10 @@ class DeliveryRecyclerViewAdapter(
 
         fun bind(order: OrdersForOwnerToCustomer, confirmPickUp: (OrdersForOwnerToCustomer) -> Unit, cancelPickUp: (OrdersForOwnerToCustomer) -> Unit) {
             binding.customerNameText.text = order.customerName
-            binding.customerOrderText.text = "Order Amount: ${order.orderAmount}"
-            binding.customerAddressText.text = order.customerAddress
+            binding.customerOrderText.text = "${order.orderAmount} Jugs"
+            binding.customerAddressText.text = order.customerAddress.take(20)
+            binding.deliveryCostText.text = "${order.orderCost} PHP"
+            binding.deliveryTimeText.text = "Delivery time: ${order.deliveryTime}"
 
             binding.acceptButton.setOnClickListener {
                 showConfirmDialog("Confirm pickup completion?", order, confirmPickUp)
