@@ -51,18 +51,16 @@ class CustomerDashboard : AppCompatActivity() {
 
         binding.bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.dashboard -> {
-                    binding.screenName.text="Good Day, $name"
+                R.id.home -> {
+                    updateScreenName("Good Day, $name")
                     replaceFragment(CustomerDashboardFragment())
                     true
                 }
-                R.id.messages -> {
-                    binding.screenName.text="Messages"
-                   //replaceFragment(ClientsFragment())
+                R.id.stations -> {
+                   replaceFragment(CustomerStationsFragment())
                     true
                 }
-                R.id.orders -> {
-                    binding.screenName.text="Orders"
+                R.id.inventory -> {
                     //replaceFragment(OrdersOwnerFragment())
                     true
                 }
@@ -84,6 +82,10 @@ class CustomerDashboard : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun updateScreenName(text: String) {
+        binding.screenName.text = text
     }
 
     private fun openSettings() {
