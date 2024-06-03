@@ -36,69 +36,75 @@ class OwnerForDeliveryOrders : Fragment() {
             OrdersForOwnerToCustomer(
                 "John Doe",
                 "john.doe@example.com",
+                "1234567890",
                 "5",
-                (5 * 20).toString(),
-                "123 Main St,Cogon,Compostela,Cebu,Philippines",
+                "$100",
+                "123 Main St",
                 "2023-06-01",
                 "6:00 PM",
                 "Owner 1",
                 "owner1@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
                 "Jane Smith",
                 "jane.smith@example.com",
+                "0987654321",
                 "3",
-                (3 * 20).toString(),
+                "$60",
                 "456 Elm St",
                 "2023-06-02",
                 "5:00 PM",
                 "Owner 2",
                 "owner2@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
                 "Robert Brown",
                 "robert.brown@example.com",
+                "5678901234",
                 "2",
-                (2 * 20).toString(),
+                "$40",
                 "789 Oak St",
                 "2023-06-03",
                 "4:00 PM",
                 "Owner 3",
                 "owner3@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
                 "Emily Johnson",
                 "emily.johnson@example.com",
+                "3456789012",
                 "4",
-                (4 * 20).toString(),
+                "$80",
                 "101 Pine St",
                 "2023-06-04",
                 "3:00 PM",
                 "Owner 4",
                 "owner4@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             ),
             OrdersForOwnerToCustomer(
                 "Michael Williams",
                 "michael.williams@example.com",
+                "6789012345",
                 "6",
-                (6 * 20).toString(),
+                "$120",
                 "202 Birch St",
                 "2023-06-05",
                 "2:00 PM",
                 "Owner 5",
                 "owner5@example.com",
-                "Pending",
+                "Cancelled",
                 "Pending"
             )
         )
+
 
         // Initialize the adapter with filtered data
         adapter = DeliveryRecyclerViewAdapter(

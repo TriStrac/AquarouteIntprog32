@@ -29,7 +29,7 @@ class OwnerDashboard : AppCompatActivity() {
 
         val name = intent.getStringExtra("loggedInName")
         binding.screenName.text="Good Day, $name"
-        replaceFragment(DeliveriesFragment())
+        replaceFragment(OwnerHomeDashboardFragment())
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -72,7 +72,7 @@ class OwnerDashboard : AppCompatActivity() {
                     state=1
                     stateCheck()
                     updateScreenName("Good Day, $name")
-                    replaceFragment(DeliveriesFragment())
+                    replaceFragment(OwnerHomeDashboardFragment())
                     true
                 }
                 R.id.messages -> {

@@ -3,6 +3,7 @@ package com.cansal.aquaroute.models
 data class OrdersForOwnerToCustomer(
     val customerName: String,
     val customerEmail: String,
+    val customerNumber: String,
     val orderAmount: String,
     val orderCost: String,
     val customerAddress: String,

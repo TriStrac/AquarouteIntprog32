@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dashboardBG"
-    tools:context=".DeliveriesFragment">
+    tools:context=".OwnerHomeDashboardFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/stationStatusCard"
@@ -119,7 +119,7 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:src="@drawable/outline_storefront_24"
-                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintBottom_toTopOf="@+id/stationProfileButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/horizontalLine"
@@ -136,9 +136,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/stationProfileButton"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:background="@drawable/button_primary"
                 android:paddingStart="18dp"
                 android:paddingEnd="18dp"

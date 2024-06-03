@@ -14,9 +14,11 @@ firebaseAuth = "23.0.0"
 firebaseDatabase = "21.0.0"
 security="1.1.0-alpha03"
 circleImageView = "3.1.0"
+gson = "2.9.0"
 
 
 [libraries]
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 circleImageView = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleImageView" }
 androidx-security-crypto = {group = "androidx.security", name = "security-crypto", version.ref = "security"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

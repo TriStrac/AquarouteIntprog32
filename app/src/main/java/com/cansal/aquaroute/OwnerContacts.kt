@@ -1,37 +1,35 @@
 package com.cansal.aquaroute
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.cansal.aquaroute.adapters.HistoryRecyclerViewAdapter
-import com.cansal.aquaroute.databinding.ActivityOwnerHistoryPageBinding
-import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.cansal.aquaroute.adapters.OwnerContactsRecyclerViewAdapter
+import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
+import com.cansal.aquaroute.databinding.ActivityOwnerContactsBinding
 
-class OwnerHistoryPage : AppCompatActivity() {
-    private lateinit var binding: ActivityOwnerHistoryPageBinding
-    private lateinit var adapter: HistoryRecyclerViewAdapter
+class OwnerContacts : AppCompatActivity() {
+
+    private lateinit var binding: ActivityOwnerContactsBinding
+    private lateinit var adapter: OwnerContactsRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityOwnerContactsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        binding = ActivityOwnerHistoryPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        enableEdgeToEdge()
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         binding.backIcon.setOnClickListener {
             finish()
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
-
-        // Initialize ordersList with your data
+        // Create sample data
         val ordersList = listOf(
             OrdersForOwnerToCustomer(
                 "John Doe",
@@ -105,13 +103,11 @@ class OwnerHistoryPage : AppCompatActivity() {
             )
         )
 
+        // Initialize adapter
+        adapter = OwnerContactsRecyclerViewAdapter(this, ordersList)
 
-
-        // Initialize the adapter with filtered data
-        adapter = HistoryRecyclerViewAdapter(this, ordersList)
-
-        // Set up the RecyclerView with the adapter
-        binding.historyRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.historyRecyclerView.adapter = adapter
+        // Set up RecyclerView
+        binding.contactsRecyclerView.adapter = adapter
+        binding.contactsRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 }
