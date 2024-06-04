@@ -5,12 +5,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.cansal.aquaroute.databinding.ActivityCustomerHomeProfileBinding
+import com.cansal.aquaroute.databinding.ActivityCustomerOrderHistoryBinding
+import com.cansal.aquaroute.databinding.FragmentCustomerDashboardBinding
 
-class CustomerHomeProfileActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCustomerHomeProfileBinding
+class CustomerOrderHistoryActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCustomerOrderHistoryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityCustomerHomeProfileBinding.inflate(layoutInflater)
+        binding = ActivityCustomerOrderHistoryBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)

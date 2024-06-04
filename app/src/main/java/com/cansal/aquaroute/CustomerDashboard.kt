@@ -61,7 +61,7 @@ class CustomerDashboard : AppCompatActivity() {
                     true
                 }
                 R.id.inventory -> {
-                    //replaceFragment(OrdersOwnerFragment())
+                    replaceFragment(CustomerInventoryFragment())
                     true
                 }
                 else -> false

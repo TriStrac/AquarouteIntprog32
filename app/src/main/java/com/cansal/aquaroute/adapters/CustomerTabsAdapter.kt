@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class CustomerStationAdapter(fm: FragmentManager, behavior: Int) : FragmentPagerAdapter(fm, behavior) {
+class CustomerTabsAdapter(fm: FragmentManager, behavior: Int) : FragmentPagerAdapter(fm, behavior) {
     private val fragmentArrayList = ArrayList<Fragment>()
     private val fragmentTitle = ArrayList<String>()
 
