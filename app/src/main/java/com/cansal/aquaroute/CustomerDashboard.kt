@@ -4,6 +4,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,13 @@ class CustomerDashboard : AppCompatActivity() {
         val name = intent.getStringExtra("loggedInName")
         binding.screenName.text="Good Day, $name"
         replaceFragment(CustomerDashboardFragment())
+
+        val navHeaderView = binding.navView.inflateHeaderView(R.layout.nav_header)
+        val sideBarName: TextView = navHeaderView.findViewById(R.id.sideBarName)
+        val sideBarEmail: TextView = navHeaderView.findViewById(R.id.sideBarEmail)
+
+        sideBarName.text = intent.getStringExtra("loggedInName")
+        sideBarEmail.text = intent.getStringExtra("loggedInEmail")
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId){

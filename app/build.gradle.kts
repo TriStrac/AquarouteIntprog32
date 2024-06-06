@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.flexbox)
     implementation(libs.gson)
     implementation(libs.circleImageView)

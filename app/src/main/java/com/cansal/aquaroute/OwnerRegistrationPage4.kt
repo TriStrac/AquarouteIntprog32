@@ -12,6 +12,7 @@ import com.cansal.aquaroute.databinding.ActivityOwnerRegistrationPage4Binding
 import com.cansal.aquaroute.models.CustomerUser
 import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
 import com.cansal.aquaroute.models.OwnerUser
+import com.cansal.aquaroute.models.StationStats
 import com.cansal.aquaroute.models.Subscribers
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -95,7 +96,7 @@ class OwnerRegistrationPage4 : AppCompatActivity() {
             val encodedEmail = encodeEmail(email)
             val database = FirebaseDatabase.getInstance()
             val reference = database.getReference("users")
-            val ownerUser = OwnerUser(email, password, stationName, region, street, unit, phone, name, type)
+            val ownerUser = OwnerUser(encodedEmail, password, stationName, region, street, unit, phone, name, type)
 
             reference.child(encodedEmail).setValue(ownerUser).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -106,7 +107,14 @@ class OwnerRegistrationPage4 : AppCompatActivity() {
             }
             initializeSubscribers(encodedEmail)
             initializeOrders(encodedEmail)
+            initializeStats(encodedEmail)
         }
+    }
+    private fun initializeStats(email:String){
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("stationStats")
+        val statsInit = StationStats(email,0,0,0)
+        reference.child(email).setValue(statsInit)
     }
     private fun initializeSubscribers(email:String){
         val database = FirebaseDatabase.getInstance()

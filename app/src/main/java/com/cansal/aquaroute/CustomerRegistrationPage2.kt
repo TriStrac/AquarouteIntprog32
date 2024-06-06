@@ -100,12 +100,11 @@ class CustomerRegistrationPage2 : AppCompatActivity() {
     private fun createCustomerAccount(email: String?, password: String?, name: String?, phone: String?, region: String?, street: String?, unit: String?, type: String?) {
         val database = FirebaseDatabase.getInstance()
         val reference = database.getReference("users")
-
-        val customerUser = CustomerUser(email, password, name, phone, region, street, unit, type)
-        if (email != null) {
-            val encodedEmail = encodeEmail(email)
-            reference.child(encodedEmail).setValue(customerUser)
-            initializeCustomerStock(encodedEmail)
+        val email2 = email?.let { encodeEmail(it) }
+        val customerUser = CustomerUser(email2, password, name, phone, region, street, unit, type)
+        if (email2 != null) {
+            reference.child(email2).setValue(customerUser)
+            initializeCustomerStock(email2)
         }
     }
 

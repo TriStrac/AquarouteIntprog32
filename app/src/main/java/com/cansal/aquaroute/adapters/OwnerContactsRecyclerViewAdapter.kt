@@ -13,10 +13,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cansal.aquaroute.R
 import com.cansal.aquaroute.models.OrdersForOwnerToCustomer
+import com.cansal.aquaroute.models.Subscribers
 
 class OwnerContactsRecyclerViewAdapter(
     private val context: Context,
-    private val dataList: List<OrdersForOwnerToCustomer>
+    private val dataList: MutableList<Subscribers>
 ) : RecyclerView.Adapter<OwnerContactsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +36,11 @@ class OwnerContactsRecyclerViewAdapter(
             showCustomerDetailsDialog(currentItem)
         }
     }
-
+    fun updateSubscribers(newList: List<Subscribers>) {
+        dataList.clear() // Clear the existing list
+        dataList.addAll(newList) // Add the new list
+        notifyDataSetChanged() // Notify the adapter that the data has changed
+    }
     override fun getItemCount(): Int {
         return dataList.size
     }
@@ -45,7 +50,9 @@ class OwnerContactsRecyclerViewAdapter(
         val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
     }
 
-    private fun showDeleteConfirmationDialog(item: OrdersForOwnerToCustomer) {
+
+
+    private fun showDeleteConfirmationDialog(item: Subscribers) {
         AlertDialog.Builder(context)
             .setMessage("Deleting customer will remove them from your contact list and will automatically unsubscribe from your station. Confirm deletion?")
             .setPositiveButton("Confirm") { dialog, _ ->
@@ -58,9 +65,9 @@ class OwnerContactsRecyclerViewAdapter(
             .show()
     }
 
-    private fun showCustomerDetailsDialog(item: OrdersForOwnerToCustomer) {
+    private fun showCustomerDetailsDialog(item: Subscribers) {
         val message = "Name: ${item.customerName}\n" +
-                "Number: ${item.customerNumber}\n" +
+                "Number: ${item.customerPhone}\n" +
                 "Address: ${item.customerAddress}"
 
         AlertDialog.Builder(context)
@@ -68,7 +75,7 @@ class OwnerContactsRecyclerViewAdapter(
             .setMessage(message)
             .setPositiveButton("Call") { dialog, _ ->
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${item.customerNumber}")
+                intent.data = Uri.parse("tel:${item.customerPhone}")
                 context.startActivity(intent)
                 dialog.dismiss()
             }

@@ -1,24 +1,29 @@
 package com.cansal.aquaroute
 
+import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.cansal.aquaroute.databinding.ActivityOwnerDashboardBinding
+import com.cansal.aquaroute.storage.LocalStorage
 
 class OwnerDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerDashboardBinding
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var localStorage: LocalStorage
     private var state = 1
-
+    private val PROFILE_UPDATE_REQUEST_CODE = 100
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityOwnerDashboardBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        localStorage=LocalStorage(this)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.dashboardBG)
         toggle = ActionBarDrawerToggle(this, binding.main, R.string.open, R.string.close)
@@ -30,6 +35,13 @@ class OwnerDashboard : AppCompatActivity() {
         val name = intent.getStringExtra("loggedInName")
         binding.screenName.text="Good Day, $name"
         replaceFragment(OwnerHomeDashboardFragment())
+
+        val navHeaderView = binding.navView.getHeaderView(0)
+        val sideBarName: TextView = navHeaderView.findViewById(R.id.sideBarName)
+        val sideBarEmail: TextView = navHeaderView.findViewById(R.id.sideBarEmail)
+
+        sideBarName.text = localStorage.loggedInName
+        sideBarEmail.text = localStorage.loggedInEmail
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -92,6 +104,18 @@ class OwnerDashboard : AppCompatActivity() {
             }
         }
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PROFILE_UPDATE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // Reload the sidebar email and name from the updated LocalStorage
+            val navHeaderView = binding.navView.getHeaderView(0)
+            val sideBarName: TextView = navHeaderView.findViewById(R.id.sideBarName)
+            val sideBarEmail: TextView = navHeaderView.findViewById(R.id.sideBarEmail)
+
+            sideBarName.text = localStorage.loggedInName
+            sideBarEmail.text = localStorage.loggedInEmail
+        }
+    }
 
     private fun stateCheck(){
         when(state){
@@ -108,6 +132,7 @@ class OwnerDashboard : AppCompatActivity() {
             }
         }
     }
+
 
     fun updateScreenName(text: String) {
         binding.screenName.text = text
