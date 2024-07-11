@@ -31,7 +31,11 @@ class LoginPage : AppCompatActivity() {
         }
 
         binding.loginButton.setOnClickListener {
+<<<<<<< HEAD
             val email = binding.emailInputText.text.toString().trim()
+=======
+            val email = encodeEmail(binding.emailInputText.text.toString().trim())
+>>>>>>> parent of 8a54c53 (initial commit)
             val password = binding.passwordInputText.text.toString().trim()
             if (validateInput(email, password)) {
                 validateAccount(email, password)
