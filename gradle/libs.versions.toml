@@ -12,19 +12,19 @@ constraintlayout = "2.1.4"
 googleGmsGoogleServices = "4.4.1"
 firebaseAuth = "23.0.0"
 firebaseDatabase = "21.0.0"
-security="1.1.0-alpha03"
+security = "1.1.0-alpha03"
 circleImageView = "3.1.0"
 gson = "2.9.0"
 flexbox = "3.0.0"
-
-
+coroutines = "1.6.0"
+retrofit = "2.11.0"
+converterGson = "2.11.0"
 
 [libraries]
 flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
-
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 circleImageView = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleImageView" }
-androidx-security-crypto = {group = "androidx.security", name = "security-crypto", version.ref = "security"}
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -35,9 +35,13 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+convertergson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
-

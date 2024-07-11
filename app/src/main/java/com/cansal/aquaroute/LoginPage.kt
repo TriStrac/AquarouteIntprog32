@@ -3,17 +3,24 @@ package com.cansal.aquaroute
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cansal.aquaroute.databinding.ActivityLoginPageBinding
+import com.cansal.aquaroute.models.LoginRequest
+import com.cansal.aquaroute.models.LoginResponse
+import com.cansal.aquaroute.network.RetrofitClient
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginPage : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
@@ -31,15 +38,14 @@ class LoginPage : AppCompatActivity() {
         }
 
         binding.loginButton.setOnClickListener {
-<<<<<<< HEAD
+            val password=binding.passwordInputText.text.toString().trim()
             val email = binding.emailInputText.text.toString().trim()
-=======
-            val email = encodeEmail(binding.emailInputText.text.toString().trim())
->>>>>>> parent of 8a54c53 (initial commit)
-            val password = binding.passwordInputText.text.toString().trim()
-            if (validateInput(email, password)) {
-                validateAccount(email, password)
-            }
+            createPost(email,password)
+//            val email = encodeEmail(binding.emailInputText.text.toString().trim())
+//            val password = binding.passwordInputText.text.toString().trim()
+//            if (validateInput(email, password)) {
+//                validateAccount(email, password)
+//            }
         }
 
         binding.backButtonLogin.setOnClickListener {
@@ -60,7 +66,30 @@ class LoginPage : AppCompatActivity() {
             finish()
         }
     }
+    private fun createPost(email:String,password:String) {
+        val post = LoginRequest(email, password)
+        RetrofitClient.apiService.loginPost(post).enqueue(object: Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    val intent = Intent(this@LoginPage, WelcomeToHomeRedirectorPage::class.java).apply {
+                        putExtra("loggedInName", email)
+                        putExtra("loggedInEmail", email)
+                        putExtra("loggedInType", "customer")
+                    }
 
+                    val options = ActivityOptions.makeCustomAnimation(
+                        this@LoginPage, R.anim.fade_in, R.anim.slide_out_left
+                    )
+                    startActivity(intent, options.toBundle())
+                } else {
+                    response.errorBody()?.string()?.let { Log.e("Response",it) }
+                }
+            }
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                t.message?.let { Log.e("Response",it) }
+            }
+        })
+    }
     private fun validateAccount(email: String, password: String) {
         val reference = FirebaseDatabase.getInstance().getReference("users")
         val checkUserDatabase = reference.orderByChild("email").equalTo(email)

@@ -40,11 +40,10 @@ android {
 }
 
 dependencies {
-<<<<<<< HEAD
-=======
+    implementation(libs.retrofit)
+    implementation(libs.convertergson)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
->>>>>>> parent of 8a54c53 (initial commit)
     implementation(libs.flexbox)
     implementation(libs.gson)
     implementation(libs.circleImageView)
