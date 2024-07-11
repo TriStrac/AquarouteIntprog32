@@ -21,6 +21,7 @@ flexbox = "3.0.0"
 
 [libraries]
 flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
+
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 circleImageView = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleImageView" }
 androidx-security-crypto = {group = "androidx.security", name = "security-crypto", version.ref = "security"}
@@ -34,8 +35,6 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
-kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
-kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
